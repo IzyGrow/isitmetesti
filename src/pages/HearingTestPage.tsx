@@ -1,11 +1,15 @@
 import { HearingTest } from "@/components/HearingTest";
-import Footer from "@/components/Footer";
+import { Footer } from "@/components/Footer";
 
 const HearingTestPage = () => {
-  return <>
-    <HearingTest onBackToIntro={() => (window.location.href = "/")} />
-    <Footer />
-  </>;
+  return (
+    <div className="min-h-screen flex flex-col">
+      <div className="flex-1">
+        <HearingTest onBackToIntro={() => (window.location.href = "/")} />
+      </div>
+      <Footer />
+    </div>
+  );
 };
 
-export default HearingTestPage; 
+export default HearingTestPage;

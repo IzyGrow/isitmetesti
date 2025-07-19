@@ -1,11 +1,7 @@
 import { HearingTestIntro } from "@/components/HearingTestIntro";
-import Footer from "@/components/Footer";
 
 const Index = () => {
-  return <>
-    <HearingTestIntro />
-    <Footer />
-  </>;
+  return <HearingTestIntro />;
 };
 
 export default Index;

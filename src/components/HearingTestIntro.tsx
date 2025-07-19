@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Volume2, Headphones, VolumeOff, Clock, Users, CheckCircle } from "lucide-react";
+import { Footer } from "@/components/Footer";
 
 export const HearingTestIntro = () => {
   return (
@@ -72,14 +73,9 @@ export const HearingTestIntro = () => {
                           <Volume2 className="w-10 h-10 text-primary-foreground" />
                         </div>
                         <h3 className="font-semibold text-foreground">Ses Ayarı</h3>
-                        <div className="space-y-3">
-                          <p className="text-sm text-muted-foreground leading-relaxed">
-                            Cihazınızda ses seviyesini %50'ye ayarlayın.
-                          </p>
-                          <button className="text-xs text-primary hover:text-primary-dark transition-colors underline font-medium">
-                            📱 Ses seviyesini nasıl ayarlarım?
-                          </button>
-                        </div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          Cihazınızda ses seviyesini %50'ye ayarlayın.
+                        </p>
                       </div>
                     </Card>
                   </div>
@@ -125,9 +121,7 @@ export const HearingTestIntro = () => {
       </div>
       
       {/* Footer */}
-      <footer className="w-full bg-muted/30 border-t border-border py-4 px-4 text-center">
-        <p className="text-sm text-muted-foreground">© 2025. İzmir Ses İşitme Cihazları. Tüm hakları saklıdır.</p>
-      </footer>
+      <Footer />
     </div>
   );
 };

@@ -104,12 +104,6 @@ const HeaderBar = () => (
   </header>
 );
 
-// Footer component
-const Footer = () => (
-  <footer className="w-full bg-muted/30 border-t border-border py-4 px-4 text-center">
-    <p className="text-sm text-muted-foreground">© 2025. İzmir Ses İşitme Cihazları. Tüm hakları saklıdır.</p>
-  </footer>
-);
 
 export const HearingTest = ({ onBackToIntro }: HearingTestProps) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -292,7 +286,6 @@ export const HearingTest = ({ onBackToIntro }: HearingTestProps) => {
               </form>
             </Card>
           </div>
-          <Footer />
         </>
       );
     }
@@ -404,7 +397,6 @@ export const HearingTest = ({ onBackToIntro }: HearingTestProps) => {
               </div>
             </Card>
           </div>
-          <Footer />
         </>
       );
     }
@@ -470,22 +462,22 @@ export const HearingTest = ({ onBackToIntro }: HearingTestProps) => {
                         />
                       </div>
                       <div>
-                        <label className="block mb-2 font-medium text-foreground">E-posta *</label>
+                        <label className="block mb-2 font-medium text-foreground">E-posta</label>
                         <Input 
                           name="email"
                           type="email" 
                           placeholder="ornek@email.com" 
-                          required 
                           className="h-12"
                         />
                       </div>
                     </div>
                     <div>
-                      <label className="block mb-2 font-medium text-foreground">Telefon</label>
+                      <label className="block mb-2 font-medium text-foreground">Telefon *</label>
                       <Input 
                         name="phone"
                         type="tel" 
                         placeholder="0555 123 45 67" 
+                        required
                         className="h-12"
                       />
                     </div>
@@ -611,7 +603,6 @@ export const HearingTest = ({ onBackToIntro }: HearingTestProps) => {
               </div>
             </div>
           </div>
-          <Footer />
         </div>
       </>
     );
@@ -718,7 +709,7 @@ export const HearingTest = ({ onBackToIntro }: HearingTestProps) => {
           </Card>
         </div>
       </div>
-      <Footer />
+      
     </>
   );
 };
