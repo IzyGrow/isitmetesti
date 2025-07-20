@@ -180,7 +180,7 @@ export const Footer = () => {
         <div className="border-t border-border w-full mt-8"></div>
         <div className="pt-6 text-center">
           <p className="text-base text-muted-foreground">
-            © 2025. İzmir Ses İşitme Cihazları. Tüm hakları saklıdır.
+            © 2025. İzmirses İşitme Cihazları. Tüm hakları saklıdır.
           </p>
         </div>
       </div>
