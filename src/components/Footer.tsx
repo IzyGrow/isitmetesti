@@ -3,10 +3,10 @@ import { Facebook, Instagram, MessageCircle, Mail, Phone } from "lucide-react";
 export const Footer = () => {
   return (
     <footer className="w-full bg-muted">
-      <div className="w-full py-6 px-40">
+      <div className="w-full py-6 px-4 md:px-8 lg:px-40">
         {/* Sınır çizgisi grid ile hizalı */}
-        <div className="border-t border-border w-full mb-8"></div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-start w-full">
+        <div className="border-t border-border w-full mb-6 md:mb-8"></div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 items-start w-full">
           {/* Diğer 3 kolon: iletişim, şubeler, hızlı erişim */}
           {/* İletişim Section */}
           <div className="space-y-8">
@@ -170,8 +170,8 @@ export const Footer = () => {
             </div>
           </div>
           {/* Açıklama yazısı en sağa alınıyor */}
-          <div className="md:col-span-1 col-span-full flex items-center justify-center md:justify-end mb-8 md:mb-0">
-            <p className="text-base md:text-lg font-bold text-foreground leading-relaxed drop-shadow-sm max-w-xs text-right">
+          <div className="md:col-span-1 col-span-full flex items-center justify-center mb-8 md:mb-0">
+            <p className="text-base md:text-lg font-bold text-foreground leading-relaxed drop-shadow-sm max-w-xs text-center">
               İzmir Ses, İzmir'de işitme kaybıyla mücadele eden bireylere en iyi işitme çözümlerini sunmaya kendini adamıştır. 20 yılı aşkın deneyime sahip uzman ekibimiz, her bireyin özel ihtiyaçlarını karşılamak için en son teknolojiyi ve en yüksek kaliteli ürünleri kullanmaktadır.
             </p>
           </div>
