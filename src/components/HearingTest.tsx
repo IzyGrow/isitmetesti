@@ -64,7 +64,7 @@ const likertOptions = [
   { value: "5", label: "Tamamen katılıyorum" },
 ];
 
-const CONTACT_EMAIL = "berkay489@gmail.com";
+const CONTACT_EMAIL = "info@izmirses.com";
 
 // Frekans türü ve renk eşlemesi
 const frequencyMeta = {
@@ -427,14 +427,14 @@ export const HearingTest = ({ onBackToIntro }: HearingTestProps) => {
                 {/* Sol taraf - İletişim Formu */}
                 <Card className="bg-gradient-card shadow-strong border border-border p-8">
                   <h2 className="text-2xl font-bold mb-6 text-center bg-gradient-primary bg-clip-text text-transparent">İletişim Formu</h2>
-                  <form action="https://formsubmit.co/berkay489@gmail.com" method="POST" className="space-y-6" target="_blank"
+                  <form action="https://formsubmit.co/info@izmirses.com" method="POST" className="space-y-6" target="_blank"
                     onSubmit={e => {
                       e.preventDefault();
                       const form = e.target as HTMLFormElement;
                       const formData = new FormData(form);
                       // Dinamik form oluştur
                       const newForm = document.createElement('form');
-                      newForm.action = "https://formsubmit.co/berkay489@gmail.com";
+                      newForm.action = "https://formsubmit.co/info@izmirses.com";
                       newForm.method = "POST";
                       newForm.target = "_blank";
                       for (const [key, value] of formData.entries()) {
@@ -506,7 +506,7 @@ export const HearingTest = ({ onBackToIntro }: HearingTestProps) => {
                   <Card className="bg-gradient-card shadow-strong border border-border p-6 hover:shadow-medium transition-all duration-300">
                     <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center shadow-soft">
-                        <MessageCircle className="w-6 h-6 text-white" />
+                        <img src="/whatsapp_logo.png" alt="WhatsApp" className="w-6 h-6" />
                       </div>
                       <div>
                         <h3 className="text-xl font-bold text-foreground">WhatsApp ile Ulaşın</h3>
@@ -518,7 +518,7 @@ export const HearingTest = ({ onBackToIntro }: HearingTestProps) => {
                       className="w-full h-12 bg-green-500 hover:bg-green-600 text-white"
                       onClick={() => window.open("https://wa.me/905444020605", "_blank")}
                     >
-                      <MessageCircle className="w-5 h-5 mr-2" />
+                      <img src="/whatsapp_logo.png" alt="WhatsApp" className="w-5 h-5 mr-2" />
                       WhatsApp ile Mesaj Gönder
                     </Button>
                   </Card>
@@ -713,3 +713,4 @@ export const HearingTest = ({ onBackToIntro }: HearingTestProps) => {
     </>
   );
 };
+

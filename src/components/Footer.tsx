@@ -68,7 +68,7 @@ export const Footer = () => {
                   rel="noopener noreferrer"
                   className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground hover:bg-primary-dark transition-colors"
                 >
-                  <MessageCircle className="w-6 h-6" />
+                  <img src="/whatsapp_logo.png" alt="WhatsApp" className="w-6 h-6" />
                 </a>
               </div>
             </div>
