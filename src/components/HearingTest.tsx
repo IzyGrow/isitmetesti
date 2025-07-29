@@ -300,7 +300,7 @@ export const HearingTest = ({ onBackToIntro }: HearingTestProps) => {
               </div>
               <div className="p-8 md:p-12">
                 <p className="text-lg text-muted-foreground mb-8">Yanıtlarınız başarıyla kaydedildi.</p>
-                <Button onClick={() => setShowContact(true)} variant="oticon" className="w-full h-12 text-lg font-semibold shadow-medium">Sonraki</Button>
+                <Button onClick={() => setShowContact(true)} variant="oticon" className="w-full h-12 text-lg font-semibold shadow-medium">Test Sonucu İçin Devam Et</Button>
               </div>
             </Card>
           </div>
@@ -392,7 +392,7 @@ export const HearingTest = ({ onBackToIntro }: HearingTestProps) => {
                 <h2 className="text-5xl font-extrabold text-white mb-0">Teşekkürler!</h2>
               </div>
               <div className="p-8 md:p-12">
-                <p className="text-lg text-muted-foreground mb-8">İletişim formunuz başarıyla gönderildi. En kısa sürede sizinle iletişime geçilecektir.</p>
+                <p className="text-lg text-muted-foreground mb-8">Test sonucunu size gönderebilmemiz için lütfen aşağıdaki formu doldurun. Sonucunuzu hemen iletelim.</p>
                 <Button onClick={() => setShowContactThanks(false)} variant="oticon" className="w-full h-12 text-lg font-semibold shadow-medium">Kapat</Button>
               </div>
             </Card>
