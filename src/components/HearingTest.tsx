@@ -300,7 +300,7 @@ export const HearingTest = ({ onBackToIntro }: HearingTestProps) => {
               </div>
               <div className="p-8 md:p-12">
                 <p className="text-lg text-muted-foreground mb-8">Yanıtlarınız başarıyla kaydedildi.</p>
-                <Button onClick={() => setShowContact(true)} variant="oticon" className="w-full h-12 text-lg font-semibold shadow-medium">Test Sonucu İçin Devam Et</Button>
+                <Button onClick={() => setShowContact(true)} variant="oticon" className="w-full h-12 text-lg font-semibold shadow-medium">Test Sonucu İçin Devam Edin</Button>
               </div>
             </Card>
           </div>
