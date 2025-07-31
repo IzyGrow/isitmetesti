@@ -64,7 +64,7 @@ const likertOptions = [
   { value: "5", label: "Tamamen katılıyorum" },
 ];
 
-const CONTACT_EMAIL = "info@izmirses.com";
+const CONTACT_EMAIL = "mert.arslan@izmirses.com.tr";
 
 // Frekans türü ve renk eşlemesi
 const frequencyMeta = {
@@ -315,42 +315,42 @@ export const HearingTest = ({ onBackToIntro }: HearingTestProps) => {
       name: "Alsancak Şubesi",
       address: "Şair eşref Bulv. No:82/1 Şair Apt. K:1 D:1 Alsancak / İzmir",
       phone: "0 (544) 402 06 05",
-      email: "info@izmirses.com",
+      email: "mert.arslan@izmirses.com.tr",
       mapUrl: "https://maps.google.com?q=Şair+eşref+Bulv.+No:82/1+Şair+Apt.+K:1+D:1+Alsancak+İzmir"
     },
     {
       name: "Gaziemir Şubesi",
       address: "Atıfbey Mah. Etiler Cad. No:16/B Gaziemir/İzmir",
       phone: "0 (232) 252 59 49 (Adar İşitme)",
-      email: "info@izmirses.com",
+      email: "mert.arslan@izmirses.com.tr",
       mapUrl: "https://maps.google.com?q=Atıfbey+Mah.+Etiler+Cad.+No:16/B+Gaziemir+İzmir"
     },
     {
       name: "Balçova Şubesi",
       address: "Korutürk Mah. Mithatpaşa Cad. No:229/B Balçova/İZMİR",
       phone: "0 (232) 278 78 86",
-      email: "info@izmirses.com",
+      email: "mert.arslan@izmirses.com.tr",
       mapUrl: "https://maps.google.com?q=Korutürk+Mah.+Mithatpaşa+Cad.+No:229/B+Balçova+İZMİR"
     },
     {
       name: "Menderes Şubesi",
       address: "Cüneytbey Mah. Çevreyolu Bulv. No:137/A Menderes / İZMİR",
       phone: "0 (552) 843 96 36",
-      email: "info@izmirses.com",
+      email: "mert.arslan@izmirses.com.tr",
       mapUrl: "https://maps.google.com?q=Cüneytbey+Mah.+Çevreyolu+Bulv.+No:137/A+Menderes+İZMİR"
     },
     {
       name: "Karşıyaka Şube",
       address: "Bahariye Mah. Doç. Dr. Bahriye Üçok Bulv. No:10 Karşıyaka/İZMİR",
       phone: "0 (505) 035 99 90",
-      email: "info@izmirses.com",
+      email: "mert.arslan@izmirses.com.tr",
       mapUrl: "https://maps.google.com?q=Bahariye+Mah.+Doç.+Dr.+Bahriye+Üçok+Bulv.+No:10+Karşıyaka+İZMİR"
     },
     {
       name: "Yeşilyurt Şubesi",
       address: "Basın Sitesi Mah. 177/5 Sk. No:19/B Karabağlar / İzmir",
       phone: "0 (536) 746 34 30",
-      email: "info@izmirses.com",
+      email: "mert.arslan@izmirses.com.tr",
       mapUrl: "https://maps.google.com?q=Basın+Sitesi+Mah.+177/5+Sk.+No:19/B+Karabağlar+İzmir"
     }
   ];
@@ -427,14 +427,14 @@ export const HearingTest = ({ onBackToIntro }: HearingTestProps) => {
                 {/* Sol taraf - İletişim Formu */}
                 <Card className="bg-gradient-card shadow-strong border border-border p-8">
                   <h2 className="text-2xl font-bold mb-6 text-center bg-gradient-primary bg-clip-text text-transparent">İletişim Formu</h2>
-                  <form action="https://formsubmit.co/info@izmirses.com" method="POST" className="space-y-6" target="_blank"
+                  <form action="https://formsubmit.co/mert.arslan@izmirses.com.tr" method="POST" className="space-y-6" target="_blank"
                     onSubmit={e => {
                       e.preventDefault();
                       const form = e.target as HTMLFormElement;
                       const formData = new FormData(form);
                       // Dinamik form oluştur
                       const newForm = document.createElement('form');
-                      newForm.action = "https://formsubmit.co/info@izmirses.com";
+                      newForm.action = "https://formsubmit.co/mert.arslan@izmirses.com.tr";
                       newForm.method = "POST";
                       newForm.target = "_blank";
                       for (const [key, value] of formData.entries()) {

@@ -28,11 +28,11 @@ export const Footer = () => {
                 </p>
                 
                 <a 
-                  href="mailto:info@izmirses.com"
+                  href="mailto:mert.arslan@izmirses.com.tr"
                   className="text-primary hover:text-primary-dark transition-colors flex items-center gap-3 text-lg"
                 >
                   <Mail className="w-5 h-5" />
-                  info@izmirses.com
+                  mert.arslan@izmirses.com.tr
                 </a>
                 
                 <a 
