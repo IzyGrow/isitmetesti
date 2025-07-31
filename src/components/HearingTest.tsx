@@ -100,7 +100,14 @@ function formatTime(sec: number) {
 // Header bar for all pages
 const HeaderBar = () => (
   <header className="w-full border-b border-border shadow-sm flex items-center justify-start py-4 px-4 fixed top-0 left-0 z-50" style={{height: '120px', background: 'rgba(247,247,247,1)'}}>
-    <img src="/izmirses-logo.jpeg" alt="İzmirses İşitme Cihazları" className="h-24 object-contain" />
+    <a 
+      href="https://izmirses.com.tr/" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="cursor-pointer hover:opacity-80 transition-opacity"
+    >
+      <img src="/izmirses-logo.jpeg" alt="İzmirses İşitme Cihazları" className="h-24 object-contain" />
+    </a>
   </header>
 );
 
@@ -420,7 +427,7 @@ export const HearingTest = ({ onBackToIntro }: HearingTestProps) => {
               {/* Header */}
               <div className="text-center mb-12">
                 <h1 className="text-4xl font-bold text-foreground mb-4">Test Tamamlandı!</h1>
-                <p className="text-lg text-muted-foreground">Bizimle iletişime geçin veya en yakın şubemizi bulun</p>
+                <p className="text-lg text-muted-foreground">Test sonucunu size gönderebilmemiz için lütfen aşağıdaki formu doldurun. Sonucunuzu hemen iletelim.</p>
               </div>
 
               <div className="grid lg:grid-cols-2 gap-8">

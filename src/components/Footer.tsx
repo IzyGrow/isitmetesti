@@ -11,11 +11,18 @@ export const Footer = () => {
           {/* İletişim Section */}
           <div className="space-y-8">
             <div className="flex items-center space-x-3">
-              <img 
-                src="/izmirses-logo.jpeg" 
-                alt="İzmirses İşitme Cihazları" 
-                className="h-20 object-contain"
-              />
+              <a 
+                href="https://izmirses.com.tr/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="cursor-pointer hover:opacity-80 transition-opacity"
+              >
+                <img 
+                  src="/izmirses-logo.jpeg" 
+                  alt="İzmirses İşitme Cihazları" 
+                  className="h-20 object-contain"
+                />
+              </a>
             </div>
             
             <div className="space-y-6">

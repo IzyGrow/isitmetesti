@@ -8,7 +8,14 @@ export const HearingTestIntro = () => {
     <div className="min-h-screen bg-gradient-subtle">
       {/* Fixed Header with izmirses logo */}
       <header className="w-full border-b border-border shadow-sm flex items-center justify-start py-4 px-4 fixed top-0 left-0 z-50" style={{height: '120px', background: 'rgba(247,247,247,1)'}}>
-        <img src="/izmirses-logo.jpeg" alt="İzmirses İşitme Cihazları" className="h-24 object-contain" />
+        <a 
+          href="https://izmirses.com.tr/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="cursor-pointer hover:opacity-80 transition-opacity"
+        >
+          <img src="/izmirses-logo.jpeg" alt="İzmirses İşitme Cihazları" className="h-24 object-contain" />
+        </a>
       </header>
       <div style={{paddingTop: '80px'}}>
         {/* Hero Section */}
