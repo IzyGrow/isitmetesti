@@ -1,9 +1,37 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Volume2, Headphones, VolumeOff, Clock, Users, CheckCircle } from "lucide-react";
+import { Volume2, Headphones, VolumeOff, Clock, Users, CheckCircle, MessageCircle } from "lucide-react";
 import { Footer } from "@/components/Footer";
+import { ContactForm } from "@/components/ContactForm";
+import { useState } from "react";
 
 export const HearingTestIntro = () => {
+  const [showContactForm, setShowContactForm] = useState(false);
+
+  if (showContactForm) {
+    return (
+      <div className="min-h-screen bg-gradient-subtle">
+        {/* Fixed Header with izmirses logo */}
+        <header className="w-full border-b border-border shadow-sm flex items-center justify-start py-4 px-4 fixed top-0 left-0 z-50" style={{height: '120px', background: 'rgba(247,247,247,1)'}}>
+          <a 
+            href="https://izmirses.com.tr/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            <img src="/izmirses-logo.jpeg" alt="İzmirses İşitme Cihazları" className="h-24 object-contain" />
+          </a>
+        </header>
+        <div style={{paddingTop: '140px'}}>
+          <ContactForm 
+            onBackToIntro={() => setShowContactForm(false)}
+            showBackButton={true}
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-subtle">
       {/* Fixed Header with izmirses logo */}
@@ -105,17 +133,28 @@ export const HearingTestIntro = () => {
 
                 {/* Enhanced CTA Section */}
                 <div className="pt-8 space-y-6">
-                  {/* Start Test Button */}
+                  {/* Action Buttons */}
                   <div className="space-y-4">
-                    <Button
-                      onClick={() => window.location.href = "/test"}
-                      variant="oticon"
-                      size="lg"
-                      className="w-full max-w-md h-16 text-xl font-bold shadow-strong hover:shadow-medium transition-all duration-300"
-                    >
-                      <Volume2 className="w-6 h-6 mr-3" />
-                      Testi Başlat
-                    </Button>
+                    <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
+                      <Button
+                        onClick={() => window.location.href = "/test"}
+                        variant="oticon"
+                        size="lg"
+                        className="flex-1 h-16 text-xl font-bold shadow-strong hover:shadow-medium transition-all duration-300"
+                      >
+                        <Volume2 className="w-6 h-6 mr-3" />
+                        Testi Başlat
+                      </Button>
+                      <Button
+                        onClick={() => setShowContactForm(true)}
+                        variant="outline"
+                        size="lg"
+                        className="flex-1 h-16 text-xl font-bold shadow-soft hover:shadow-medium transition-all duration-300"
+                      >
+                        <MessageCircle className="w-6 h-6 mr-3" />
+                        İletişim Formu
+                      </Button>
+                    </div>
                     <p className="text-sm text-muted-foreground">
                       Test başladığında sesler otomatik olarak çalacaktır
                     </p>
