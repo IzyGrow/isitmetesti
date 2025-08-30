@@ -4,13 +4,15 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { MapPin } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface ContactFormProps {
   testResultsString?: string;
   surveyResultsString?: string;
   onBackToIntro?: () => void;
   showBackButton?: boolean;
+  isPopup?: boolean;
+  onFormSubmit?: () => void;
 }
 
 const dealerInfo = [
@@ -58,9 +60,175 @@ const dealerInfo = [
   }
 ];
 
-export const ContactForm = ({ testResultsString, surveyResultsString, onBackToIntro, showBackButton = true }: ContactFormProps) => {
+export const ContactForm = ({ 
+  testResultsString, 
+  surveyResultsString, 
+  onBackToIntro, 
+  showBackButton = true,
+  isPopup = false,
+  onFormSubmit
+}: ContactFormProps) => {
   const [showContactThanks, setShowContactThanks] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    comment: ''
+  });
+  const [isFormValid, setIsFormValid] = useState(false);
 
+  // Form validasyonu
+  useEffect(() => {
+    const isValid = formData.name.trim() !== '' && formData.phone.trim() !== '';
+    setIsFormValid(isValid);
+  }, [formData]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!isFormValid) return;
+
+    // Form verilerini hazırla
+    const submitData = new FormData();
+    submitData.append('name', formData.name);
+    submitData.append('email', formData.email);
+    submitData.append('phone', formData.phone);
+    submitData.append('comment', formData.comment);
+    
+    if (testResultsString) {
+      submitData.append('test_sonuclari', testResultsString);
+    }
+    if (surveyResultsString) {
+      submitData.append('anket_sonuclari', surveyResultsString);
+    }
+
+    // Form gönder
+    const newForm = document.createElement('form');
+    newForm.action = "https://formsubmit.co/mert.arslan@izmirses.com.tr";
+    newForm.method = "POST";
+    newForm.target = "_blank";
+    
+    for (const [key, value] of submitData.entries()) {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = String(value);
+      newForm.appendChild(input);
+    }
+    
+    document.body.appendChild(newForm);
+    newForm.submit();
+    document.body.removeChild(newForm);
+    
+    setShowContactThanks(true);
+    setFormData({ name: '', email: '', phone: '', comment: '' });
+    
+    if (onFormSubmit) {
+      onFormSubmit();
+    }
+  };
+
+  // Popup için form içeriği
+  const formContent = (
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block mb-2 font-medium text-foreground">Ad Soyad *</label>
+          <Input 
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            placeholder="Adınız Soyadınız" 
+            required 
+            className="h-12"
+          />
+        </div>
+        <div>
+          <label className="block mb-2 font-medium text-foreground">E-posta</label>
+          <Input 
+            name="email"
+            type="email" 
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder="ornek@email.com" 
+            className="h-12"
+          />
+        </div>
+      </div>
+      <div>
+        <label className="block mb-2 font-medium text-foreground">Telefon *</label>
+        <Input 
+          name="phone"
+          type="tel" 
+          value={formData.phone}
+          onChange={handleInputChange}
+          placeholder="0555 123 45 67" 
+          required
+          className="h-12"
+        />
+      </div>
+      <div>
+        <label className="block mb-2 font-medium text-foreground">Mesajınız</label>
+        <Textarea 
+          name="comment"
+          value={formData.comment}
+          onChange={handleInputChange}
+          placeholder="Test sonuçlarım hakkında bilgi almak istiyorum..." 
+          rows={4}
+        />
+      </div>
+      <button 
+        type="submit" 
+        disabled={!isFormValid}
+        className={`w-full h-12 text-lg font-semibold shadow-medium rounded-lg transition-all ${
+          isFormValid 
+            ? 'bg-primary text-white hover:bg-primary/90' 
+            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+        }`}
+      >
+        Formu Gönder
+      </button>
+    </form>
+  );
+
+  // Popup modunda ise sadece popup göster
+  if (isPopup) {
+    return (
+      <>
+        {/* Teşekkür popup overlay */}
+        {showContactThanks && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-8 max-w-md mx-4 text-center shadow-2xl">
+              <h3 className="text-3xl font-bold mb-4">Teşekkürler!</h3>
+              <p className="text-lg text-muted-foreground mb-6">İletişim formunuz başarıyla gönderildi. En kısa sürede sizinle iletişime geçilecektir.</p>
+              <Button onClick={() => setShowContactThanks(false)} variant="oticon" className="w-full h-12 text-lg font-semibold shadow-medium">Kapat</Button>
+            </div>
+          </div>
+        )}
+
+        {/* Ana popup - kapatılamaz */}
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-40">
+          <div className="bg-white rounded-lg p-8 max-w-md mx-4 shadow-2xl">
+            <h2 className="text-2xl font-bold mb-6 text-center bg-gradient-primary bg-clip-text text-transparent">İletişim Formu</h2>
+            <p className="text-sm text-muted-foreground mb-6 text-center">
+              Test sonucunu size gönderebilmemiz için lütfen aşağıdaki formu doldurun.
+            </p>
+            {formContent}
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  // Normal modda eski görünümü koru
   return (
     <>
       {/* Teşekkür popup overlay */}
@@ -86,81 +254,7 @@ export const ContactForm = ({ testResultsString, surveyResultsString, onBackToIn
             {/* Sol taraf - İletişim Formu */}
             <Card className="bg-gradient-card shadow-strong border border-border p-8">
               <h2 className="text-2xl font-bold mb-6 text-center bg-gradient-primary bg-clip-text text-transparent">İletişim Formu</h2>
-              <form action="https://formsubmit.co/mert.arslan@izmirses.com.tr" method="POST" className="space-y-6" target="_blank"
-                onSubmit={e => {
-                  e.preventDefault();
-                  const form = e.target as HTMLFormElement;
-                  const formData = new FormData(form);
-                  // Dinamik form oluştur
-                  const newForm = document.createElement('form');
-                  newForm.action = "https://formsubmit.co/mert.arslan@izmirses.com.tr";
-                  newForm.method = "POST";
-                  newForm.target = "_blank";
-                  for (const [key, value] of formData.entries()) {
-                    const input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.name = key;
-                    input.value = String(value);
-                    newForm.appendChild(input);
-                  }
-                  document.body.appendChild(newForm);
-                  newForm.submit();
-                  document.body.removeChild(newForm);
-                  setShowContactThanks(true);
-                  form.reset();
-                }}
-              >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block mb-2 font-medium text-foreground">Ad Soyad *</label>
-                    <Input 
-                      name="name"
-                      placeholder="Adınız Soyadınız" 
-                      required 
-                      className="h-12"
-                    />
-                  </div>
-                  <div>
-                    <label className="block mb-2 font-medium text-foreground">E-posta</label>
-                    <Input 
-                      name="email"
-                      type="email" 
-                      placeholder="ornek@email.com" 
-                      className="h-12"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block mb-2 font-medium text-foreground">Telefon *</label>
-                  <Input 
-                    name="phone"
-                    type="tel" 
-                    placeholder="0555 123 45 67" 
-                    required
-                    className="h-12"
-                  />
-                </div>
-                <div>
-                  <label className="block mb-2 font-medium text-foreground">Mesajınız</label>
-                  <Textarea 
-                    name="comment"
-                    placeholder="Test sonuçlarım hakkında bilgi almak istiyorum..." 
-                    rows={4}
-                  />
-                </div>
-                {testResultsString && (
-                  <input type="hidden" name="test_sonuclari" value={testResultsString} />
-                )}
-                {surveyResultsString && (
-                  <input type="hidden" name="anket_sonuclari" value={surveyResultsString} />
-                )}
-                <button 
-                  type="submit" 
-                  className="w-full h-12 text-lg font-semibold shadow-medium bg-primary text-white rounded-lg hover:bg-primary/90 transition-all"
-                >
-                  Formu Gönder
-                </button>
-              </form>
+              {formContent}
             </Card>
 
             {/* Sağ taraf - İletişim Seçenekleri */}
